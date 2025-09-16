@@ -31,7 +31,3 @@ gemini extensions install github.com/gemini-cli-extensions/mcp-toolbox.git
 
 Add your `tools.yaml` configuration file for MCP Toolbox to the directory you
 are running Gemini CLI.
-
-## Disclaimer
-
-This is not an officially supported Google product. This extension is under active development, and breaking changes may be introduced.
