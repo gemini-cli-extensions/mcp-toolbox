@@ -1,7 +1,7 @@
 {
   "name": "mcp-toolbox",
   "version": "0.1.0",
-  "description": "Connect to mcp-toolbox",
+  "description": "Load custom tools using MCP Toolbox for Databases",
   "mcpServers": {
     "MCP Toolbox": {
       "command": "${extensionPath}${/}toolbox",
