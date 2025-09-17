@@ -7,7 +7,7 @@ running, invocable tool in minutes, without ever leaving your terminal.
 
 Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini-cli/blob/main/docs/extension.md).
 
-## Why Use MCP Toolbox Extensions?
+## Why Use the MCP Toolbox Extension?
 
 * **Simplified development**: Integrate tools to your agent in less than 10 lines of code, reuse tools between multiple agents or frameworks, and deploy new versions of tools more easily.
 * **Better performance**: Best practices such as connection pooling, authentication, and more.
