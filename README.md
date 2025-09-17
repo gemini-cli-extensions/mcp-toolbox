@@ -9,25 +9,36 @@ Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini
 
 ## Why Use the MCP Toolbox Extension?
 
-* **Simplified development**: Integrate tools to your agent in less than 10 lines of code, reuse tools between multiple agents or frameworks, and deploy new versions of tools more easily.
-* **Better performance**: Best practices such as connection pooling, authentication, and more.
-* **Enhanced security**: Integrated auth for more secure access to your data
-* **End-to-end observability**: Out of the box metrics and tracing with built-in
-  support for OpenTelemetry.
+* **Reliable Custom Servers:** Quickly create a **custom MCP server** with tools designed to reliably return accurate results. This saves significant development time and cost by ensuring your agent gets precise data without extensive guidance or fine-tuning.
+* **Enterprise Data Awareness:** Instantly upgrade your developer environment by providing your agents with **enterprise-grade data awareness**. Connect your AI systems directly to your data sources for smarter, more relevant operations.
+* **Accelerated Agent Development:** Fast-track your AI project by easily testing and validating tool usage with a **pre-built agent environment**. 
 
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
 *   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed.
+*   Any required APIs and permissions for connecting to your database.
 
 ## Installation
 
 ```bash
-gemini extensions install github.com/gemini-cli-extensions/mcp-toolbox.git
+gemini extensions install github.com/gemini-cli-extensions/mcp-toolbox
 ```
+
+## Configuration
+
+Add your [`tools.yaml` configuration file](https://googleapis.github.io/genai-toolbox/getting-started/configure/) to the directory you
+are running Gemini CLI.
 
 ## Usage
 
-Add your `tools.yaml` configuration file for MCP Toolbox to the directory you
-are running Gemini CLI.
+Interact with your custom tools using natural language.
+
+## Additional Extensions
+
+Find additional extensions to support your entire software development lifecycle at [github.com/gemini-cli-extensions](https://github.com/gemini-cli-extensions), including a generic [PostgreSQL extension](https://github.com/gemini-cli-extensions/postgres).
+
+## Troubleshooting
+
+* "cannot execute binary file": Ensure the correct binary for your OS/Architecture has been downloaded. See [Installing the server](https://googleapis.github.io/genai-toolbox/getting-started/introduction/#installing-the-server) for more information.
