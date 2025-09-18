@@ -1,0 +1,37 @@
+{
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "Features"
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes"
+    },
+    {
+      "type": "chore",
+      "section": "Miscellaneous Chores",
+      "hidden": false
+    },
+    {
+      "type": "docs",
+      "section": "Documentation",
+      "hidden": false
+    }
+  ],
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "mcp-toolbox",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "gemini-extension.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    }
+  }
+}

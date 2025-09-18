@@ -1,0 +1,137 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Package and Upload Release Assets
+
+# Global variables
+env:
+  PACKAGE_NAME: "mcp-toolbox"
+  FILES_TO_PACKAGE: "gemini-extension.json MCP-TOOLBOX.md LICENSE"
+  GCS_BUCKET_URL: "https://storage.googleapis.com/genai-toolbox/geminicli"
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  package:
+    name: Package for ${{ matrix.platform.os }}-${{ matrix.platform.arch }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        platform:
+          - { os: "linux", arch: "x64", download_path_segment: "linux/amd64", binary_suffix: "", archive_extension: "tar.gz", archive_command: 'tar -czvf "${ARCHIVE_NAME}" -C staging .' }
+          - { os: "darwin", arch: "arm64", download_path_segment: "darwin/arm64", binary_suffix: "", archive_extension: "tar.gz", archive_command: 'tar -czvf "${ARCHIVE_NAME}" -C staging .' } 
+          - { os: "darwin", arch: "x64", download_path_segment: "darwin/amd64", binary_suffix: "", archive_extension: "tar.gz", archive_command: 'tar -czvf "${ARCHIVE_NAME}" -C staging .' }
+          - { os: "win32", arch: "x64", download_path_segment: "windows/amd64", binary_suffix: ".exe", archive_extension: "zip", archive_command: '(cd staging && zip ../"${ARCHIVE_NAME}" *)' }
+    
+    steps:
+      - name: Checkout code at the new tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set Dynamic Environment Variables
+        id: vars
+        run: |
+          echo "archive_name=${{ matrix.platform.os }}.${{ matrix.platform.arch }}.${{ env.PACKAGE_NAME }}.${{ matrix.platform.archive_extension }}" >> $GITHUB_OUTPUT
+          echo "source_binary=toolbox${{ matrix.platform.binary_suffix }}" >> $GITHUB_OUTPUT
+
+      - name: Get Toolbox Version
+        id: get_toolbox_version
+        run: |
+          TOOLBOX_VERSION=$(cat toolbox_version.txt)
+          echo "Found toolbox version: ${TOOLBOX_VERSION}"
+          echo "TOOLBOX_VERSION=${TOOLBOX_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Download Source Binary
+        env:
+          TOOLBOX_VERSION: ${{ steps.get_toolbox_version.outputs.TOOLBOX_VERSION }}
+          DOWNLOAD_PATH_SEGMENT: ${{ matrix.platform.download_path_segment }}
+          SOURCE_BINARY: ${{ steps.vars.outputs.source_binary }}
+        run: |
+          DOWNLOAD_URL="${GCS_BUCKET_URL}/v${TOOLBOX_VERSION}/${DOWNLOAD_PATH_SEGMENT}/${SOURCE_BINARY}"
+          
+          echo "Downloading binary from: ${DOWNLOAD_URL}"
+          curl -L --fail -o "${SOURCE_BINARY}" "${DOWNLOAD_URL}"
+          
+          echo "Binary downloaded and prepared."
+          ls -l
+
+      - name: Create release archive
+        id: create_archive
+        env:
+          ARCHIVE_COMMAND: ${{ matrix.platform.archive_command }}
+          ARCHIVE_NAME: ${{ steps.vars.outputs.archive_name }}
+          SOURCE_BINARY: ${{ steps.vars.outputs.source_binary }}
+        run: |
+          ARCHIVE_NAME="${{ matrix.platform.os }}.${{ matrix.platform.arch }}.${PACKAGE_NAME}.${{ matrix.platform.archive_extension }}"
+          SOURCE_BINARY="toolbox${{ matrix.platform.binary_suffix }}"
+
+          echo "Packaging ${SOURCE_BINARY} into ${ARCHIVE_NAME}"
+
+          mkdir staging
+          cp "${SOURCE_BINARY}" "staging/${SOURCE_BINARY}"
+          cp ${FILES_TO_PACKAGE} staging/
+
+          if [[ "${{ matrix.platform.os }}" == "win32" ]]; then
+            echo "Modifying gemini-extension.json for Windows..."
+            jq '(.mcpServers[].command) |= sub("toolbox$"; "toolbox.exe")' gemini-extension.json > staging/gemini-extension.json
+            echo "Modification complete."
+          fi
+
+          echo "All assets staged."
+          ls -l staging
+
+          # Create archive
+          eval "${ARCHIVE_COMMAND}"
+          echo "Created archive: ${ARCHIVE_NAME}"
+          echo "ARCHIVE_PATH=${ARCHIVE_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Upload archive as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.vars.outputs.archive_name }}
+          path: ${{ steps.create_archive.outputs.ARCHIVE_PATH }}
+  
+  # This job gathers all archives and uploads them to the GitHub Release.
+  upload:
+    name: Upload all assets to release
+    runs-on: ubuntu-latest
+    needs: package
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download all archives from workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-archives
+
+      - name: List downloaded files
+        run: |
+          echo "--- Downloaded files ---"
+          ls -R release-archives
+          echo "------------------------"
+
+      - name: Upload all assets to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+            ${{ github.event.release.tag_name }} \
+            release-archives/*/*
