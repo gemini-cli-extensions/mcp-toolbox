@@ -1,5 +1,8 @@
 # Gemini CLI Extension - MCP Toolbox
 
+> [!NOTE]
+> This extension is currently in beta, and may see breaking changes until the first stable release (v1.0).
+
 Develop and query your custom tools using the power of natural language, directly
 from your command line through [MCP
 Toolbox](https://github.com/googleapis/genai-toolbox). Go from an idea to a
@@ -17,7 +20,7 @@ Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini
 
 Before you begin, ensure you have the following:
 
-*   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed.
+*   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version +v0.6.0.
 *   Any required APIs and permissions for connecting to your database.
 
 ## Installation
@@ -28,8 +31,10 @@ gemini extensions install github.com/gemini-cli-extensions/mcp-toolbox
 
 ## Configuration
 
-Add your [`tools.yaml` configuration file](https://googleapis.github.io/genai-toolbox/getting-started/configure/) to the directory you
+* Add your [`tools.yaml` configuration file](https://googleapis.github.io/genai-toolbox/getting-started/configure/) to the directory you
 are running Gemini CLI.
+
+Ensure [Application Default Credentials](https://cloud.google.com/docs/authentication/gcloud) are available in your environment if connecting to Google Cloud services.
 
 ## Usage
 
