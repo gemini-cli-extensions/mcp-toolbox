@@ -1,7 +1,7 @@
 # Gemini CLI Extension - MCP Toolbox
 
 > [!NOTE]
-> This extension is currently in beta, and may see breaking changes until the first stable release (v1.0).
+> This extension is currently in beta (pre-v1.0), and may see breaking changes until the first stable release (v1.0).
 
 Develop and query your custom tools using the power of natural language, directly
 from your command line through [MCP
@@ -14,7 +14,7 @@ Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini
 
 * **Reliable Custom Servers:** Quickly create a **custom MCP server** with tools designed to reliably return accurate results. This saves significant development time and cost by ensuring your agent gets precise data without extensive guidance or fine-tuning.
 * **Enterprise Data Awareness:** Instantly upgrade your developer environment by providing your agents with **enterprise-grade data awareness**. Connect your AI systems directly to your data sources for smarter, more relevant operations.
-* **Accelerated Agent Development:** Fast-track your AI project by easily testing and validating tool usage with a **pre-built agent environment**. 
+* **Accelerated Agent Development:** Fast-track your AI project by easily testing and validating tool usage with a **pre-built agent environment**.
 
 ## Prerequisites
 
