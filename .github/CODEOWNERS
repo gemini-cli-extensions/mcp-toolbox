@@ -3,5 +3,4 @@
 # For syntax help see:
 # https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#codeowners-syntax
 
-* @gemini-cli-extensions/senseai-eco
-* @gemini-cli-extensions/mcp-toolbox-maintainers
+* @gemini-cli-extensions/senseai-eco @gemini-cli-extensions/mcp-toolbox-maintainers
