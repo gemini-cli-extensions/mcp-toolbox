@@ -20,13 +20,13 @@ Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini
 
 Before you begin, ensure you have the following:
 
-*   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version +v0.6.0.
+*   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version **+v0.6.0**.
 *   Any required APIs and permissions for connecting to your database.
 
 ## Installation
 
 ```bash
-gemini extensions install github.com/gemini-cli-extensions/mcp-toolbox
+gemini extensions install https://github.com/gemini-cli-extensions/mcp-toolbox
 ```
 
 ## Configuration
