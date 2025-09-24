@@ -30,4 +30,4 @@ jobs:
         uses: lycheeverse/lychee-action@v2.0.2
         with:
           # There is no security token. So, it would fail on any links which aren't public.
-          args: "--verbose --no-progress **.md"
+          args: "--verbose --no-progress **/*.md"
