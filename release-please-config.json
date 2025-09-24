@@ -1,6 +1,8 @@
 {
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
+  "include-component-in-tag": false,
+  "include-v-in-tag": false,
   "changelog-sections": [
     {
       "type": "feat",
