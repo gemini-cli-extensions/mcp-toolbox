@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.1](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.1.0...0.1.1) (2025-09-26)
+
+
+### Miscellaneous Chores
+
+* add renovate bot with toolbox dep ([#16](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/16)) ([f15e320](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/f15e3208e1e0f9e40f23711d0c68a1dd6968225c))
+* **deps:** update dependency googleapis/genai-toolbox to v0.16.0 ([#18](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/18)) ([50146ab](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/50146abe377bb38ba88da3ad7760bb57d376e29f))
+* Update ReadMe disclaimer ([#10](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/10)) ([7040099](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/70400991c29b50332019fc0f0dd9e9abea2b0f06))
+* update readme install cmd ([#12](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/12)) ([01af3aa](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/01af3aa49fbc78c1c35e1a213cbe442373346c1e))
+
 ## 0.1.0 (2025-09-21)
 
 
