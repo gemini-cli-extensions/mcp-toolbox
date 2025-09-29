@@ -27,5 +27,5 @@ jobs:
       - name: Install Gemini CLI
         run: npm install @google/gemini-cli
 
-      - name: Install AlloyDB Extension
+      - name: Install Extension
         run: npx gemini extensions install --path=.
