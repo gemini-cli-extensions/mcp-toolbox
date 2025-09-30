@@ -23,18 +23,28 @@ Before you begin, ensure you have the following:
 *   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version **+v0.6.0**.
 *   Any required APIs and permissions for connecting to your database.
 
-## Installation
+## Getting Started
+
+### Installation
 
 ```bash
 gemini extensions install https://github.com/gemini-cli-extensions/mcp-toolbox
 ```
 
-## Configuration
+### Configuration
 
 * Add your [`tools.yaml` configuration file](https://googleapis.github.io/genai-toolbox/getting-started/configure/) to the directory you
 are running Gemini CLI.
 
 Ensure [Application Default Credentials](https://cloud.google.com/docs/authentication/gcloud) are available in your environment if connecting to Google Cloud services.
+
+### Start Gemini CLI
+
+To start the Gemini CLI, use the following command:
+
+```bash
+gemini
+```
 
 ## Usage
 
@@ -46,4 +56,6 @@ Find additional extensions to support your entire software development lifecycle
 
 ## Troubleshooting
 
-* "cannot execute binary file": Ensure the correct binary for your OS/Architecture has been downloaded. See [Installing the server](https://googleapis.github.io/genai-toolbox/getting-started/introduction/#installing-the-server) for more information.
+* "✖ Error during discovery for server: MCP error -32000: Connection closed": The database connection has not been established. Ensure your configuration is set via environment variables.
+* "✖ MCP ERROR: Error: spawn /Users/<USER>/.gemini/extensions/mcp-toolbox/toolbox ENOENT": The Toolbox binary did not download correctly. Ensure you are using Gemini CLI v0.6.0+.
+* "cannot execute binary file": The Toolbox binary did not download correctly. Ensure the correct binary for your OS/Architecture has been downloaded. See [Installing the server](https://googleapis.github.io/genai-toolbox/getting-started/introduction/#installing-the-server) for more information.
