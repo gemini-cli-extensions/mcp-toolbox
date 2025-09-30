@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.1.0...0.1.1) (2025-09-30)
+
+
+### Features
+
+* additional instructions for the context file ([#25](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/25)) ([1413efc](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/1413efcd66b03224705429eefdfb58e4ebf79f40))
+* standardize mcp server names ([#23](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/23)) ([e58b860](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e58b86093975ddbbad5de7c1382a73187fa66117))
+
 ## 0.1.0 (2025-09-21)
 
 
