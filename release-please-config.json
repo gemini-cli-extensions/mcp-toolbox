@@ -15,12 +15,12 @@
     {
       "type": "chore",
       "section": "Miscellaneous Chores",
-      "hidden": false
+      "hidden": true
     },
     {
       "type": "docs",
       "section": "Documentation",
-      "hidden": false
+      "hidden": true
     }
   ],
   "packages": {
