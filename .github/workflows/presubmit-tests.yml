@@ -11,23 +11,27 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-name: Lint Markdown
+name: Presubmit Tests
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  link-check:
-    name: Run link check
+  run-presubmit-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
-      - name: Link Checker
-        uses: lycheeverse/lychee-action@885c65f3dc543b57c898c8099f4e08c8afd178a2 # v2.6.1
-        with:
-          # There is no security token. So, it would fail on any links which aren't public.
-          args: "--verbose --no-progress **/*.md"
+      - name: Install Gemini CLI
+        run: npm install @google/gemini-cli
+
+      - name: Install toolbox binary
+        run: |
+          VERSION=$(cat toolbox_version.txt)
+          curl -L -o toolbox https://storage.googleapis.com/genai-toolbox/v$VERSION/linux/amd64/toolbox
+          chmod +x toolbox
+
+      - name: Install Extension
+        run: yes | npx gemini extensions install --path=.
