@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Load custom tools using MCP Toolbox for Databases",
   "mcpServers": {
-    "MCP Toolbox": {
+    "mcp_toolbox": {
       "command": "${extensionPath}${/}toolbox",
       "args": [
         "--stdio"
