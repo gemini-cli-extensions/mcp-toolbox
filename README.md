@@ -8,7 +8,7 @@ from your command line through [MCP
 Toolbox](https://github.com/googleapis/genai-toolbox). Go from an idea to a
 running, invocable tool in minutes, without ever leaving your terminal.
 
-Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini-cli/blob/main/docs/extension.md).
+Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md).
 
 ## Why Use the MCP Toolbox Extension?
 
