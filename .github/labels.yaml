@@ -1,4 +1,4 @@
-# Copyright 2024 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
   description: Improvement to the documentation for an API.
 - name: 'type: feature request'
   color: c5def5
-  description: ‘Nice-to-have’ improvement, new feature or different behavior or design.
+  description: "'Nice-to-have' improvement, new feature or different behavior or design."
 - name: 'type: process'
   color: c5def5
   description: A process-related concern. May include testing, release, or the like.
@@ -65,13 +65,6 @@
   color: ededed
   description: Release please has completed a release for this.
 
-- name: 'blunderbuss: assign'
-  color: 3DED97
-  description: Have blunderbuss assign this to someone new.
-
-- name: 'tests: run'
-  color: 3DED97
-  description: Label to trigger Github Action tests.
   
 - name: 'docs: deploy-preview'
   color: BFDADC
@@ -87,16 +80,3 @@
 - name: 'status: waiting for response'
   color: 8befd7
   description: 'Status: reviewer is awaiting feedback or responses from the author before proceeding.'
-
-- name: 'release candidate'
-  color: 32CD32
-  description: 'Use label to signal PR should be included in the next release.'
-
-# Product Labels
-- name: 'product: bigquery'
-  color: 5065c7
-  description: 'Product: Assigned to the BigQuery team.'
-# Product Labels
-- name: 'product: looker'
-  color: 5065c7
-  description: 'Product: Assigned to the Looker team.'
