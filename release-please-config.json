@@ -1,6 +1,8 @@
 {
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
+  "include-component-in-tag": false,
+  "include-v-in-tag": false,
   "changelog-sections": [
     {
       "type": "feat",
@@ -13,12 +15,12 @@
     {
       "type": "chore",
       "section": "Miscellaneous Chores",
-      "hidden": false
+      "hidden": true
     },
     {
       "type": "docs",
       "section": "Documentation",
-      "hidden": false
+      "hidden": true
     }
   ],
   "packages": {
