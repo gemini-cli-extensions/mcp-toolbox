@@ -71,7 +71,7 @@ are currently tested in the [MCP Toolbox GitHub](https://github.com/googleapis/g
     [Release Please](https://github.com/googleapis/release-please) to manage
     releases. Your commit messages must adhere to the
     [Conventional Commits](https://www.conventionalcommits.org/) specification.
-*   **Dependency Updates:** [Renovate](https://www.mend.io/free-developer-tools/renovate/)
+*   **Dependency Updates:** [Renovate](https://github.com/apps/forking-renovate)
     is configured to automatically create pull requests for dependency updates.
 
 ## Building the Extension
