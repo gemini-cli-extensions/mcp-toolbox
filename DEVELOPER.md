@@ -10,8 +10,7 @@ Before you begin, ensure you have the following:
 1.  **Gemini CLI:** Install the Gemini CLI version v0.6.0 or above. Installation
     instructions can be found on the official Gemini CLI documentation. You can
     verify your version by running `gemini --version`.
-2.  **MCP Toolbox Cluster & Instance:** For testing data plane tools, you will need access to an active MCP Toolbox
-    for PostgreSQL instance.
+2.  **MCP Toolbox tools.yaml:** For testing, you will need a custom tools.yaml.
 
 ## Developing the Extension
 
@@ -22,8 +21,8 @@ The core logic for this extension is handled by a pre-built `toolbox` binary. Th
 1.  **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/gemini-cli-extensions/alloydb.git
-    cd alloydb
+    git clone https://github.com/gemini-cli-extensions/mcp-toolbox.git
+    cd mcp-toolbox
     ```
 
 2.  **Download the Toolbox Binary:** The required version of the `toolbox` binary
@@ -49,7 +48,7 @@ The core logic for this extension is handled by a pre-built `toolbox` binary. Th
     The CLI will prompt you to confirm the installation. Accept it to proceed.
 
 4.  **Testing Changes:** After installation, start the Gemini CLI (`gemini`).
-    You can now interact with the `alloydb` tools to manually test your changes
+    You can now interact with the `mcp-toolbox` tools to manually test your changes
     against your connected database.
 
 ## Testing
@@ -78,7 +77,7 @@ are currently tested in the [MCP Toolbox GitHub](https://github.com/googleapis/g
 ## Building the Extension
 
 The "build" process for this extension involves packaging the extension's
-metadata files (`gemini-extension.json`, `ALLOYDB.md`, `LICENSE`) along with the
+metadata files (`gemini-extension.json`, `mcp-toolbox.md`, `LICENSE`) along with the
 pre-built `toolbox` binary into platform-specific archives (`.tar.gz` or `.zip`).
 
 This process is handled automatically by the
@@ -94,7 +93,7 @@ The primary maintainers for this repository are defined in the
 [`.github/CODEOWNERS`](.github/CODEOWNERS) file:
 
 *   `@gemini-cli-extensions/senseai-eco`
-*   `@gemini-cli-extensions/alloydb-maintainers`
+*   `@gemini-cli-extensions/mcp-toolbox-maintainers`
 
 ### Releasing
 
