@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-blank_issues_enabled: false
-contact_links:
-  - name: Google Cloud Support
-    url: https://cloud.google.com/support/
-    about: If you have a support contract with Google, please both open an issue here and open Google Cloud Support portal with a link to the issue.
+header:
+  license:
+    spdx-id: "Apache-2.0"
+    copyright-owner: "Google LLC"
+  paths:
+    - "**/*.yaml"
+    - "**/*.yml"
+    - "**/*.toml"

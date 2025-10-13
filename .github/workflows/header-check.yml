@@ -12,8 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-blank_issues_enabled: false
-contact_links:
-  - name: Google Cloud Support
-    url: https://cloud.google.com/support/
-    about: If you have a support contract with Google, please both open an issue here and open Google Cloud Support portal with a link to the issue.
+name: 'License Header Check'
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  license-check:
+    name: 'License Header Check'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v5
+
+      - name: Check License Header
+        uses: apache/skywalking-eyes/header@v0.7.0
