@@ -9,6 +9,12 @@ Toolbox](https://github.com/googleapis/genai-toolbox). Go from an idea to a
 running, invocable tool in minutes, without ever leaving your terminal.
 
 Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini-cli/blob/main/docs/extensions/index.md).
+> [!IMPORTANT]
+> **We Want Your Feedback!**
+> Please share your thoughts with us by filling out our feedback [form][form]. 
+> Your input is invaluable and helps us improve the project for everyone.
+
+[form]: https://docs.google.com/forms/d/e/1FAIpQLSfEGmLR46iipyNTgwTmIDJqzkAwDPXxbocpXpUbHXydiN1RTw/viewform?usp=pp_url&entry.157487=mcp-toolbox
 
 ## Why Use the MCP Toolbox Extension?
 
@@ -16,12 +22,14 @@ Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini
 * **Enterprise Data Awareness:** Instantly upgrade your developer environment by providing your agents with **enterprise-grade data awareness**. Connect your AI systems directly to your data sources for smarter, more relevant operations.
 * **Accelerated Agent Development:** Fast-track your AI project by easily testing and validating tool usage with a **pre-built agent environment**.
 
+
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
-*   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version **+v0.6.0**.
-*   Any required APIs and permissions for connecting to your database.
+* [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version **+v0.6.0**.
+* Setup Gemini CLI [Authentication](https://github.com/google-gemini/gemini-cli/tree/main?tab=readme-ov-file#-authentication-options).
+* Any required APIs and permissions for connecting to your database.
 
 ## Getting Started
 
