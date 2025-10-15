@@ -38,7 +38,7 @@ body:
         - label: "I've updated to the latest versions"
 
   - type: input
-    id: version
+    id: ex_version
     attributes:
       label: Extension Version
       description: |
