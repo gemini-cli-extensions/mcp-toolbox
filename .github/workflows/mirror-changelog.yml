@@ -12,29 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Mirror Toolbox Changelog
 
+name: Mirror Toolbox Changelog
 on:
   pull_request_target:
     types: [opened, edited]
-
 jobs:
   add-release-notes:
     if: github.actor == 'renovate[bot]' && startsWith(github.head_ref, 'renovate/googleapis-genai-toolbox')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-
     steps:
       - name: Add Toolbox Release Notes to PR Body
         uses: actions/github-script@v6
-        env:
-          REQUIRED_KEYWORDS: 'toolbox'
         with:
           script: |
-            const requiredKeywordsEnv = process.env.REQUIRED_KEYWORDS;
-            const requiredKeywords = requiredKeywordsEnv.split(',').map(kw => kw.trim()).filter(kw => kw.length > 0);
-
             const prBody = context.payload.pull_request.body || '';
 
             // Extract the relevant changelog section
@@ -49,9 +42,6 @@ jobs:
             }
             const releaseNotesSection = prBody.substring(startIndex, endIndex);
 
-            // Parse, Filter, and transform
-            const prefixesToFilter = ['source/', 'sources/', 'tool/', 'tools/'];
-            
             // Use a map for cleaner type switching
             const typeMap = {
               '##### ⚠ BREAKING CHANGES': 'feat!',
@@ -83,22 +73,7 @@ jobs:
               const itemMatch = trimmedLine.match(/^[*-]\s(.*)$/);
               if (itemMatch) {
                 const originalContent = itemMatch[1]; 
-                const lineAsLowerCase = originalContent.toLowerCase();
-
-                const hasPrefix = prefixesToFilter.some(prefix => lineAsLowerCase.includes(prefix));
-                
-                // Check if the line includes ANY of the required keywords
-                let hasAnyRequiredKeyword = false;
-                if (requiredKeywords.length > 0) {
-                  hasAnyRequiredKeyword = requiredKeywords.some(keyword => lineAsLowerCase.includes(keyword));
-                }
-                
-                // Include if it doesn't have a prefix OR it has any of the required keywords
-                if (!hasPrefix || hasAnyRequiredKeyword) {
-                  newChangelog.push(`- ${currentType}: ${originalContent}`);
-                } else {
-                  console.log(`Filtering out: ${originalContent}`);
-                }
+                newChangelog.push(`- ${currentType}: ${originalContent}`);
               }
             }
             
