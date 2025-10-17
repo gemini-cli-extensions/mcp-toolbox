@@ -1,0 +1,134 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Mirror Toolbox Changelog
+
+on:
+  pull_request_target:
+    types: [opened, edited]
+
+jobs:
+  add-release-notes:
+    if: github.actor == 'renovate[bot]' && startsWith(github.head_ref, 'renovate/googleapis-genai-toolbox')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Add Toolbox Release Notes to PR Body
+        uses: actions/github-script@v6
+        env:
+          REQUIRED_KEYWORDS: 'alloydb'
+        with:
+          script: |
+            const requiredKeywordsEnv = process.env.REQUIRED_KEYWORDS;
+            const requiredKeywords = requiredKeywordsEnv.split(',').map(kw => kw.trim()).filter(kw => kw.length > 0);
+
+            const prBody = context.payload.pull_request.body || '';
+
+            // Extract the relevant changelog section
+            const startMarker = '<summary>googleapis/genai-toolbox';
+            const endMarker = '</details>';
+            const startIndex = prBody.indexOf(startMarker);
+            const endIndex = prBody.indexOf(endMarker, startIndex);
+
+            if (startIndex === -1 || endIndex === -1) {
+              console.log('Could not find the release notes section in the PR body. Exiting.');
+              return;
+            }
+            const releaseNotesSection = prBody.substring(startIndex, endIndex);
+
+            // Parse, Filter, and transform
+            const prefixesToFilter = ['source/', 'sources/', 'tool/', 'tools/'];
+            
+            // Use a map for cleaner type switching
+            const typeMap = {
+              '##### ⚠ BREAKING CHANGES': 'feat!',
+              '##### Features': 'feat',
+              '##### Bug Fixes': 'fix',
+              '##### Chores': 'ignore',
+              '##### Miscellaneous Chores': 'ignore',
+              '##### Documentation': 'ignore',
+            };
+            
+            let currentType = 'feat'; // Default
+            const newChangelog = [];
+            
+            for (const line of releaseNotesSection.split('\n')) {
+              const trimmedLine = line.trim();
+
+              // Update current type if it's a header
+              if (typeMap[trimmedLine]) {
+                currentType = typeMap[trimmedLine];
+                continue;
+              }
+
+              // Skip ignored sections
+              if (currentType === 'ignore') {
+                continue;
+              }
+
+              // Match and extract changelog item
+              const itemMatch = trimmedLine.match(/^[*-]\s(.*)$/);
+              if (itemMatch) {
+                const originalContent = itemMatch[1]; 
+                const lineAsLowerCase = originalContent.toLowerCase();
+
+                const hasPrefix = prefixesToFilter.some(prefix => lineAsLowerCase.includes(prefix));
+                
+                // Check if the line includes ANY of the required keywords
+                let hasAnyRequiredKeyword = false;
+                if (requiredKeywords.length > 0) {
+                  hasAnyRequiredKeyword = requiredKeywords.some(keyword => lineAsLowerCase.includes(keyword));
+                }
+                
+                // Include if it doesn't have a prefix OR it has any of the required keywords
+                if (!hasPrefix || hasAnyRequiredKeyword) {
+                  newChangelog.push(`- ${currentType}: ${originalContent}`);
+                } else {
+                  console.log(`Filtering out: ${originalContent}`);
+                }
+              }
+            }
+            
+            if (newChangelog.length === 0) {
+              console.log('Found no changelog items to add after filtering. Exiting.');
+              return;
+            }
+
+            // Construct the override block
+            const overrideBlock = [
+              '\n\nBEGIN_COMMIT_OVERRIDE',
+              ...newChangelog,
+              'END_COMMIT_OVERRIDE'
+            ].join('\n');
+
+            // Update PR body
+            const baseBody = prBody.split('\n\nBEGIN_COMMIT_OVERRIDE')[0].trim();
+            const finalBody = baseBody + overrideBlock;
+
+            if (finalBody === prBody) {
+              console.log('The generated changelog is identical. No update needed.');
+              return;
+            }
+
+            // Update the PR
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              body: finalBody,
+            });
+
+            console.log('Successfully updated the PR body with filtered release notes.');
