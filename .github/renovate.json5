@@ -20,6 +20,10 @@
       ],
       pinDigests: true,
     },
+    {
+      matchPackageNames: ['googleapis/genai-toolbox'],
+      'semanticCommitType': 'feat'
+    }
   ],
   customManagers: [
     {
