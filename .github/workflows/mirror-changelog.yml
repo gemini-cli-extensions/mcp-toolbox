@@ -29,7 +29,7 @@ jobs:
       - name: Add Toolbox Release Notes to PR Body
         uses: actions/github-script@v6
         env:
-          REQUIRED_KEYWORDS: 'alloydb'
+          REQUIRED_KEYWORDS: 'toolbox'
         with:
           script: |
             const requiredKeywordsEnv = process.env.REQUIRED_KEYWORDS;
