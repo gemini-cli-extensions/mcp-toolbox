@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.1.1...0.1.2) (2025-10-17)
+
+
+### Features
+
+* **deps:** update dependency googleapis/genai-toolbox to v0.17.0 ([#33](https://github.com/gemini-cli-extensions/mcp-toolbox/issues/33)) ([5745a8f](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/5745a8fc96336cbedc3d99cdecaedd2721ea6ce5))
+
 ## [0.1.1](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.1.0...0.1.1) (2025-09-30)
 
 
