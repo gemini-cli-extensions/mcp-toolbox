@@ -112,13 +112,10 @@ The process is handled by the [`mirror-changelog.yml`](.github/workflows/mirror-
    Renovate for `toolbox` version updates.
 2. **Parsing:** It reads the detailed release notes that Renovate includes in
    the PR body.
-3. **Filtering:** These release notes are filtered to include only changes
-   relevant to this extension. The relevance is determined by a keyword (e.g.,
-   `toolbox`), passed as an environment variable in the workflow file.
-4. **Changelog Injection:** The script formats the filtered entries as
+3. **Changelog Injection:** The script formats the filtered entries as
    conventional commits and injects them into the PR body within a
    `BEGIN_COMMIT_OVERRIDE` block.
-5. **Release Please:** When the main Release PR is created, `release-please`
+4. **Release Please:** When the main Release PR is created, `release-please`
    reads this override block instead of the standard `chore(deps): ...` commit
    message, effectively mirroring the filtered upstream changelog into this
    project's release notes.
