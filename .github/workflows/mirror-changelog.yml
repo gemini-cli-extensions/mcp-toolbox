@@ -19,7 +19,7 @@ on:
     types: [opened, edited]
 jobs:
   add-release-notes:
-    if: github.actor == 'renovate[bot]' && startsWith(github.head_ref, 'renovate/googleapis-genai-toolbox')
+    if: github.actor == 'renovate-bot' && startsWith(github.head_ref, 'renovate/googleapis-genai-toolbox')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -73,7 +73,7 @@ jobs:
               const itemMatch = trimmedLine.match(/^[*-]\s(.*)$/);
               if (itemMatch) {
                 const originalContent = itemMatch[1]; 
-                newChangelog.push(`- ${currentType}: ${originalContent}`);
+                newChangelog.push(`${currentType}: ${originalContent}`);
               }
             }
             
