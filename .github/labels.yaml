@@ -80,3 +80,7 @@
 - name: 'status: waiting for response'
   color: 8befd7
   description: 'Status: reviewer is awaiting feedback or responses from the author before proceeding.'
+
+- name: 'release-please:force-run'
+  color: bdca82
+  description: To run release-please
