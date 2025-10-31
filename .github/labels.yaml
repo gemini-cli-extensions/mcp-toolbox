@@ -83,4 +83,4 @@
 
 - name: 'release-please:force-run'
   color: bdca82
-  description: To run release-please
+  description: Manually trigger the release please workflow on a PR.
