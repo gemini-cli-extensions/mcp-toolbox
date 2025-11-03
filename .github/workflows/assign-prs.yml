@@ -15,13 +15,14 @@
 name: PR assignment
 
 on:
-  pull_request:
-    types: [opened, edited, synchronize, reopened]
+  pull_request_target:
+    types: [opened, edited, reopened]
 
 jobs:
   auto-assign:
     runs-on: ubuntu-latest
     permissions:
+      issues: write
       pull-requests: write
     steps:
       - name: "Auto-assign PR"

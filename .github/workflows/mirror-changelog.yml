@@ -72,7 +72,25 @@ jobs:
               // Match and extract changelog item
               const itemMatch = trimmedLine.match(/^[*-]\s(.*)$/);
               if (itemMatch) {
-                const originalContent = itemMatch[1]; 
+                let originalContent = itemMatch[1]; 
+
+                // This is a two-step process to prevent `release-please` from
+                // creating mangled, doubly-nested links for PRs.
+
+                // STEP 1: CLEAN THE INPUT.
+                // The source changelog contains a zero-width space as an HTML entity (`&#8203;`).
+                // This breaks the regex in the next step, so we must remove it first.
+                // E.g., "[#&#8203;1770](...)" becomes "[#1770](...)"
+                originalContent = originalContent.replace(/&#8203;/g, '');
+
+                // STEP 2: PROTECT THE OUTPUT.
+                // `release-please` aggressively tries to auto-link any text that looks like `#1234`.
+                // To prevent this, we insert an invisible Unicode zero-width space (`\u200B`)
+                // between the '#' and the number in the link text. This breaks the parser's
+                // pattern matching without changing the visual appearance of the link.
+                // E.g., "[#1770](...)" becomes "[genai-toolbox#​1770](...)"
+                originalContent = originalContent.replace(/\[#(\d+)\](\([^)]+\))/g, '[genai-toolbox#\u200B$1]$2');
+                
                 newChangelog.push(`${currentType}: ${originalContent}`);
               }
             }
