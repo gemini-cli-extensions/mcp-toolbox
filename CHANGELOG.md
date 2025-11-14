@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.1](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.2.0...0.2.1) (2025-11-14)
+
+
+### Features
+
+* **source/alloydb, source/cloud-sql-postgres,source/cloud-sql-mysql,source/cloud-sql-mssql:** Use project from env for alloydb and cloud sql control plane tools ([genai-toolbox#​1588](https://redirect.github.com/googleapis/genai-toolbox/issues/1588)) ([12bdd95](https://redirect.github.com/googleapis/genai-toolbox/commit/12bdd954597e49d3ec6b247cc104584c5a4d1943)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+* **source/mysql:** Set default host and port for MySQL source ([genai-toolbox#​1922](https://redirect.github.com/googleapis/genai-toolbox/issues/1922)) ([2c228ef](https://redirect.github.com/googleapis/genai-toolbox/commit/2c228ef4f2d4cb8dfc41e845466bfe3566d141a1)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+* **source/Postgresql:** Set default host and port for Postgresql  source ([genai-toolbox#​1927](https://redirect.github.com/googleapis/genai-toolbox/issues/1927)) ([7e6e88a](https://redirect.github.com/googleapis/genai-toolbox/commit/7e6e88a21f2b9b60e0d645cdde33a95892d31a04)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+* **tool/looker-generate-embed-url:** Adding generate embed url tool ([genai-toolbox#​1877](https://redirect.github.com/googleapis/genai-toolbox/issues/1877)) ([ef63860](https://redirect.github.com/googleapis/genai-toolbox/commit/ef63860559798fbad54c1051d9f53bce42d66464)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+* **tools/postgres:** Add `list_triggers`, `database_overview` tools for postgres ([genai-toolbox#​1912](https://redirect.github.com/googleapis/genai-toolbox/issues/1912)) ([a4c9287](https://redirect.github.com/googleapis/genai-toolbox/commit/a4c9287aecf848faa98d973a9ce5b13fa309a58e)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+* **tools/postgres:** Add list\_indexes, list\_sequences tools for postgres ([genai-toolbox#​1765](https://redirect.github.com/googleapis/genai-toolbox/issues/1765)) ([897c63d](https://redirect.github.com/googleapis/genai-toolbox/commit/897c63dcea43226262d2062088c59f2d1068fca7)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+* Added prompt support for toolbox ([genai-toolbox#​1798](https://redirect.github.com/googleapis/genai-toolbox/issues/1798)) ([cd56ea4](https://redirect.github.com/googleapis/genai-toolbox/commit/cd56ea44fbdd149fcb92324e70ee36ac747635db)) ([e57d7a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/e57d7a40732ed7ca592f6415a96d79ea3ebddc08))
+
 ## [0.2.0](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.1.3...0.2.0) (2025-11-07)
 
 
