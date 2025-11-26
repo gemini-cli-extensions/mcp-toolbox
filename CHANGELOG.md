@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.3.0](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.2.1...0.3.0) (2025-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tools/spanner-list-tables:** Unmarshal `object_details` json string into map to make response have nested json ([genai-toolbox#​1894](https://redirect.github.com/googleapis/genai-toolbox/issues/1894)) ([446d62a](https://redirect.github.com/googleapis/genai-toolbox/commit/446d62acd995d5128f52e9db254dd1c7138227c6))
+
+### Features
+
+* **tools/postgres:** Add `long_running_transactions`, `list_locks` and `replication_stats` tools ([genai-toolbox#​1751](https://redirect.github.com/googleapis/genai-toolbox/issues/1751)) ([5abad5d](https://redirect.github.com/googleapis/genai-toolbox/commit/5abad5d56c6cc5ba86adc5253b948bf8230fa830)) ([a40592c](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/a40592cba476ea3c5b131429da3d6b8efe6b1f12))
+* **tools/spanner-list-tables:** Unmarshal `object_details` json string into map to make response have nested json ([genai-toolbox#​1894](https://redirect.github.com/googleapis/genai-toolbox/issues/1894)) ([446d62a](https://redirect.github.com/googleapis/genai-toolbox/commit/446d62acd995d5128f52e9db254dd1c7138227c6)) ([a40592c](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/a40592cba476ea3c5b131429da3d6b8efe6b1f12))
+
+
+### Bug Fixes
+
+* **tools:** Check for query execution error for pgxpool.Pool ([genai-toolbox#​1969](https://redirect.github.com/googleapis/genai-toolbox/issues/1969)) ([2bff138](https://redirect.github.com/googleapis/genai-toolbox/commit/2bff1384a3570ef46bc03ebebc507923af261987)) ([a40592c](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/a40592cba476ea3c5b131429da3d6b8efe6b1f12))
+* **tools/alloydbgetinstance:** Remove parameter duplication ([genai-toolbox#​1993](https://redirect.github.com/googleapis/genai-toolbox/issues/1993)) ([0e269a1](https://redirect.github.com/googleapis/genai-toolbox/commit/0e269a1d125eed16a51ead27db4398e6e48cb948)) ([a40592c](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/a40592cba476ea3c5b131429da3d6b8efe6b1f12))
+
 ## [0.2.1](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.2.0...0.2.1) (2025-11-14)
 
 
