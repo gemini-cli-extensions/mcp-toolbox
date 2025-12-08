@@ -1,6 +1,6 @@
 {
   "name": "mcp-toolbox",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Load custom tools using MCP Toolbox for Databases",
   "mcpServers": {
     "mcp_toolbox": {
