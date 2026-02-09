@@ -34,4 +34,6 @@ jobs:
           chmod +x toolbox
 
       - name: Install Extension
+        env:
+          GEMINI_API_KEY: "placeholder"
         run: yes | npx gemini extensions install .
