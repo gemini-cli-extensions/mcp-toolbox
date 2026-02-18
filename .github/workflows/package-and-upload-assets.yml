@@ -131,7 +131,8 @@ jobs:
       - name: Upload all assets to GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
         run: |
           gh release upload \
-            ${{ github.event.release.tag_name }} \
+            ${GITHUB_EVENT_RELEASE_TAG_NAME} \
             release-archives/*/*
