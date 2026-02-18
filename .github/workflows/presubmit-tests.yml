@@ -34,4 +34,4 @@ jobs:
           chmod +x toolbox
 
       - name: Install Extension
-        run: yes | npx gemini extensions install .
+        run: npx gemini extensions validate .
