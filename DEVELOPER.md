@@ -43,7 +43,6 @@ The core logic for this extension is handled by a pre-built `toolbox` binary. Th
 
     ```bash
     gemini extensions link .
-    gemini extensions link .
     ```
     The CLI will prompt you to confirm the linking. Accept it to proceed.
 
