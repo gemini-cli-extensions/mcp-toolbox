@@ -38,16 +38,15 @@ The core logic for this extension is handled by a pre-built `toolbox` binary. Th
     ```
     Adjust the URL for your operating system (`linux/amd64`, `darwin/arm64`, `windows/amd64`).
 
-3.  **Install the Extension Locally:** Use the Gemini CLI to install the
+3.  **Link the Extension Locally:** Use the Gemini CLI to install the
     extension from your local directory.
 
     ```bash
-    gemini extensions install .
     gemini extensions link .
     ```
-    The CLI will prompt you to confirm the installation. Accept it to proceed.
+    The CLI will prompt you to confirm the linking. Accept it to proceed.
 
-4.  **Testing Changes:** After installation, start the Gemini CLI (`gemini`).
+4.  **Testing Changes:** After linking, start the Gemini CLI (`gemini`).
     You can now interact with the `mcp-toolbox` tools to manually test your changes
     against your connected database.
 
