@@ -41,8 +41,26 @@ If the user chose **Local Binary**, intelligently identify the OS/Architecture a
 ### Phase 3: No Configuration (Prebuilt Servers Only)
 This core setup skill STRICTLY utilizes prebuilt servers to establish a baseline running state. **Do NOT generate a `tools.yaml` file.**
 
+**CRITICAL SECURITY RULE:** NEVER ask the user to type their database password, host, or user details into this chat. 
+
 1. **Database Selection**: Ask the user which supported database they plan to connect to (e.g., Postgres, MySQL, Neo4j, Looker, etc.).
-2. **Environment Variables**: Provide detailed instructions to the user to provide connection details via environment variables before running the server (e.g., `POSTGRES_USER`, `POSTGRES_PASSWORD`).
+2. **Environment Variable Instructions**: Once they select a database, provide them with the exact terminal commands to set their credentials locally. 
+    * *Example for Mac/Linux (Bash/Zsh):*
+      ```bash
+      export POSTGRES_USER="your_username"
+      export POSTGRES_PASSWORD="your_password"
+      export POSTGRES_DATABASE="your_database"
+      export POSTGRES_HOST="host_address"
+      export POSTGRES_PORT="port_number"
+      ```
+    * *Example for Windows (PowerShell):*
+      ```powershell
+      $env:POSTGRES_USER="your_username"
+      $env:POSTGRES_PASSWORD="your_password"
+      $env:POSTGRES_DATABASE="your_database"
+      $env:POSTGRES_HOST="host_address"
+      $env:POSTGRES_PORT="port_number"
+      ```
 3. **Specialized Skills for Customization**: Explicitly advise the user: *"This setup uses a prebuilt server for immediate connectivity. If you need to write custom SQL tools, configure authentication (AuthServices), or define custom prompts, please let me know so I can activate the specialized database skill (e.g., `config-mcp-toolbox-postgres`) to help you generate a custom `tools.yaml`."*
 
 ### Phase 4: Execution
