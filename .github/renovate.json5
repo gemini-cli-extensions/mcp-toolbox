@@ -21,7 +21,7 @@
       pinDigests: true,
     },
     {
-      matchPackageNames: ['googleapis/genai-toolbox'],
+      matchPackageNames: ['googleapis/mcp-toolbox'],
       'semanticCommitType': 'feat'
     }
   ],
@@ -31,7 +31,7 @@
       managerFilePatterns: ["/toolbox_version\\.txt$/"],
       matchStrings: ["(?<currentValue>[\\d\\.]+)"],
       datasourceTemplate: "github-releases",
-      packageNameTemplate: "googleapis/genai-toolbox",
+      packageNameTemplate: "googleapis/mcp-toolbox",
       extractVersionTemplate: "^v(?<version>.*)$",
     }
   ]

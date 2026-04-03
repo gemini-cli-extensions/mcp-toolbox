@@ -19,7 +19,7 @@ on:
     types: [opened, edited]
 jobs:
   add-release-notes:
-    if: github.actor == 'renovate-bot' && startsWith(github.head_ref, 'renovate/googleapis-genai-toolbox')
+    if: github.actor == 'renovate-bot' && startsWith(github.head_ref, 'renovate/googleapis-mcp-toolbox')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -31,7 +31,7 @@ jobs:
             const prBody = context.payload.pull_request.body || '';
 
             // Extract the relevant changelog section
-            const startMarker = '<summary>googleapis/genai-toolbox';
+            const startMarker = '<summary>googleapis/mcp-toolbox';
             const endMarker = '</details>';
             const startIndex = prBody.indexOf(startMarker);
             const endIndex = prBody.indexOf(endMarker, startIndex);
@@ -88,8 +88,8 @@ jobs:
                 // To prevent this, we insert an invisible Unicode zero-width space (`\u200B`)
                 // between the '#' and the number in the link text. This breaks the parser's
                 // pattern matching without changing the visual appearance of the link.
-                // E.g., "[#1770](...)" becomes "[genai-toolbox#​1770](...)"
-                originalContent = originalContent.replace(/\[#(\d+)\](\([^)]+\))/g, '[genai-toolbox#\u200B$1]$2');
+                // E.g., "[#1770](...)" becomes "[mcp-toolbox#​1770](...)"
+                originalContent = originalContent.replace(/\[#(\d+)\](\([^)]+\))/g, '[mcp-toolbox#\u200B$1]$2');
                 
                 newChangelog.push(`${currentType}: ${originalContent}`);
               }

@@ -15,7 +15,7 @@ If no tools are available or there is an error message `ERROR "unable to read to
 # Configuring Custom Tools
 
 Please refer to the following resources:
-* [llms.txt](https://googleapis.github.io/genai-toolbox/llms.txt): For concise,
+* [llms.txt](https://googleapis.github.io/mcp-toolbox/llms.txt): For concise,
   high-level information.
-* [llms-full.txt](https://googleapis.github.io/genai-toolbox/llms-full.txt): For
+* [llms-full.txt](https://googleapis.github.io/mcp-toolbox/llms-full.txt): For
   comprehensive, detailed documentation.
