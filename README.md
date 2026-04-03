@@ -41,7 +41,7 @@ gemini extensions install https://github.com/gemini-cli-extensions/mcp-toolbox
 
 ### Configuration
 
-* Add your [`tools.yaml` configuration file](https://googleapis.github.io/mcp-toolbox/getting-started/configure/) to the directory you
+* Add your [`tools.yaml` configuration file](https://mcp-toolbox.dev/documentation/configuration/) to the directory you
 are running Gemini CLI.
 
 Ensure [Application Default Credentials](https://cloud.google.com/docs/authentication/gcloud) are available in your environment if connecting to Google Cloud services.
