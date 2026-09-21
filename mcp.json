@@ -3,8 +3,10 @@
   "mcpServers": {
     "mcp_toolbox": {
       "type": "stdio",
-      "command": "./toolbox",
+      "command": "npx",
       "args": [
+        "-y",
+        "@toolbox-sdk/server@1.12.0",
         "--stdio"
       ]
     }
