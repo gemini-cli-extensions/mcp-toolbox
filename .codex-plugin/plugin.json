@@ -1,0 +1,34 @@
+{
+  "name": "mcp-toolbox-devkit",
+  "version": "0.7.1",
+  "description": "Build applications with MCP Toolbox for Databases.",
+  "author": {
+    "name": "Google LLC",
+    "email": "senseai-eco@google.com"
+  },
+  "homepage": "https://mcp-toolbox.dev",
+  "repository": "https://github.com/gemini-cli-extensions/mcp-toolbox",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcp",
+    "toolbox",
+    "database",
+    "agent",
+    "llm",
+    "genai"
+  ],
+  "interface": {
+    "displayName": "MCP Toolbox for Databases",
+    "shortDescription": "Build applications with MCP Toolbox for Databases.",
+    "developerName": "Google LLC",
+    "category": "Database",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "You are a highly skilled database engineer. Your purpose is to help the developer author a tools.yaml configuration for MCP Toolbox for Databases, connect it to their data sources, and use the resulting tools throughout the software delivery cycle."
+    ]
+  },
+  "mcpServers": "./.codex-plugin/.mcp.json"
+}

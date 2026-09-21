@@ -1,0 +1,28 @@
+{
+  "name": "mcp-toolbox-devkit",
+  "version": "0.7.1",
+  "description": "Build applications with MCP Toolbox for Databases.",
+  "author": {
+    "name": "Google LLC",
+    "email": "senseai-eco@google.com"
+  },
+  "homepage": "https://mcp-toolbox.dev",
+  "repository": "https://github.com/gemini-cli-extensions/mcp-toolbox",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcp",
+    "toolbox",
+    "database",
+    "agent",
+    "llm",
+    "genai"
+  ],
+  "mcpServers": {
+    "mcp_toolbox": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/toolbox",
+      "args": [
+        "--stdio"
+      ]
+    }
+  }
+}
