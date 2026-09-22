@@ -43,8 +43,9 @@ must not collide across them or startup fails.
 ## Step 1: Install the server
 
 **If this skill arrived with the `mcp-toolbox-devkit` plugin, skip this step.**
-The plugin already ships the `toolbox` binary and declares it as an MCP server.
-Go to Step 2 and write the `tools.yaml` that server needs.
+The plugin already declares the server, which `npx` fetches on first use. Node.js
+is the only requirement. Go to Step 2 and write the `tools.yaml` that server
+needs.
 
 Otherwise, `npx` is the fastest way to a running server and needs no install.
 Prefer the binary or container for anything long-lived.
