@@ -14,7 +14,8 @@
 
 
 name: Mirror Toolbox Changelog
-on:
+# Does not check out or execute untrusted PR code
+on: # zizmor: ignore[dangerous-triggers]
   pull_request_target:
     types: [opened, edited]
 jobs:
