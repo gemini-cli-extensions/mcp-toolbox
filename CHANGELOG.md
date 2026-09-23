@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.7.2](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.7.1...0.7.2) (2026-09-23)
+
+
+### Features
+
+* **release:** Add digital signature to Toolbox binaries ([mcp-toolbox#​3528](https://redirect.github.com/googleapis/mcp-toolbox/issues/3528)) ([3f0f0af](https://redirect.github.com/googleapis/mcp-toolbox/commit/3f0f0af29007929b01e95ee2caef4fd2015d5f12)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tool/cloud-storage:** Configure object operation parameters ([mcp-toolbox#​3529](https://redirect.github.com/googleapis/mcp-toolbox/issues/3529)) ([d6dc5fe](https://redirect.github.com/googleapis/mcp-toolbox/commit/d6dc5fe8e47b585415bd5f237b2ba5d8276bc0e0)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tool/cloud-storage:** Support configurable parameters ([mcp-toolbox#​3478](https://redirect.github.com/googleapis/mcp-toolbox/issues/3478)) ([bc2de2a](https://redirect.github.com/googleapis/mcp-toolbox/commit/bc2de2ab386e0ae8591c4b7f7faa6165b7edf8a2)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/dataplex-get-data-product:** Add dataplex-get-data-product tool ([mcp-toolbox#​3499](https://redirect.github.com/googleapis/mcp-toolbox/issues/3499)) ([7ea7a09](https://redirect.github.com/googleapis/mcp-toolbox/commit/7ea7a095cc6dcf85520a8f39c4cd5a20062289f7)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/dataplex-list-data-assets:** Add dataplex-list-data-assets tool ([mcp-toolbox#​3500](https://redirect.github.com/googleapis/mcp-toolbox/issues/3500)) ([182f933](https://redirect.github.com/googleapis/mcp-toolbox/commit/182f9332d67cc90d81f78b536081a7f47766d966)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/dataplex-list-data-products:** Add dataplex-list-data-products tool ([mcp-toolbox#​3337](https://redirect.github.com/googleapis/mcp-toolbox/issues/3337)) ([6dd669a](https://redirect.github.com/googleapis/mcp-toolbox/commit/6dd669ad9bad3e54206a82b3af122d845e2cdc63)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/looker:** Support complex filter\_expression parameter in queries ([mcp-toolbox#​3494](https://redirect.github.com/googleapis/mcp-toolbox/issues/3494)) ([997fb8c](https://redirect.github.com/googleapis/mcp-toolbox/commit/997fb8c39a4cb60173bcc8543118057e77e0fce4)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/looker:** Support dynamic\_fields parameter in queries ([mcp-toolbox#​3507](https://redirect.github.com/googleapis/mcp-toolbox/issues/3507)) ([cd22b89](https://redirect.github.com/googleapis/mcp-toolbox/commit/cd22b893573f87c0d5406490b71ddf317a07dc7b)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* Support MCP 2026 draft specs ([mcp-toolbox#​3544](https://redirect.github.com/googleapis/mcp-toolbox/issues/3544)) ([d12eaa8](https://redirect.github.com/googleapis/mcp-toolbox/commit/d12eaa856bad70b49ba2b7b9f2882cffbf81220f)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+
+
+### Bug Fixes
+
+* **tool/looker-create-view-from-table:** Correct Looker API payload structure ([mcp-toolbox#​3515](https://redirect.github.com/googleapis/mcp-toolbox/issues/3515)) ([18c539c](https://redirect.github.com/googleapis/mcp-toolbox/commit/18c539c5935c2a496e7e5da68241b4307d8f3e6e)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/gda:** Support mTLS and GOOGLE\_API\_USE\_MTLS\_ENDPOINT for GDA client ([mcp-toolbox#​3460](https://redirect.github.com/googleapis/mcp-toolbox/issues/3460)) ([cc2a61e](https://redirect.github.com/googleapis/mcp-toolbox/commit/cc2a61e9a522136d07f7be9b8bc87916f32bf076)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+* **tools/looker-conversational-analytics:** Validate explore\_references shape instead of panicking ([mcp-toolbox#​3531](https://redirect.github.com/googleapis/mcp-toolbox/issues/3531)) ([b67419d](https://redirect.github.com/googleapis/mcp-toolbox/commit/b67419d34bfc437b6eace5abaaf02ae1339d83ee)) ([58f91a4](https://github.com/gemini-cli-extensions/mcp-toolbox/commit/58f91a492d22f7e7809b0b5051382d5f76780554))
+
 ## [0.7.1](https://github.com/gemini-cli-extensions/mcp-toolbox/compare/0.7.0...0.7.1) (2026-06-23)
 
 
