@@ -1,11 +1,13 @@
 {
-  "name": "mcp-toolbox",
+  "name": "mcp-toolbox-devkit",
   "version": "0.7.1",
-  "description": "Load custom tools using MCP Toolbox for Databases",
+  "description": "Build applications with MCP Toolbox for Databases.",
   "mcpServers": {
     "mcp_toolbox": {
-      "command": "${extensionPath}${/}toolbox",
+      "command": "npx",
       "args": [
+        "-y",
+        "@toolbox-sdk/server@1.12.0",
         "--stdio"
       ]
     }

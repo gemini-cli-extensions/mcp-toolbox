@@ -25,18 +25,11 @@ The core logic for this extension is handled by a pre-built `toolbox` binary. Th
     cd mcp-toolbox
     ```
 
-2.  **Download the Toolbox Binary:** The required version of the `toolbox` binary
-    is specified in `toolbox_version.txt`. Download it for your platform.
-
-    ```bash
-    # Read the required version
-    VERSION=$(cat toolbox_version.txt)
-
-    # Example for macOS/amd64
-    curl -L -o toolbox https://storage.googleapis.com/mcp-toolbox-for-databases/geminicli/v$VERSION/darwin/amd64/toolbox
-    chmod +x toolbox
-    ```
-    Adjust the URL for your operating system (`linux/amd64`, `darwin/arm64`, `windows/amd64`).
+2.  **No binary to download.** The manifests run the server with
+    `npx -y @toolbox-sdk/server@<version> --stdio`, so `npx` fetches it on first
+    use. You need Node.js on your path and nothing else. The pinned version is
+    repeated in every manifest that declares the server, and Renovate bumps all
+    of them in one PR.
 
 3.  **Link the Extension Locally:** Use the Gemini CLI to install the
     extension from your local directory.
@@ -75,14 +68,14 @@ are currently tested in the [MCP Toolbox GitHub](https://github.com/googleapis/m
 
 ## Building the Extension
 
-The "build" process for this extension involves packaging the extension's
-metadata files (`gemini-extension.json`, `mcp-toolbox.md`, `LICENSE`) along with the
-pre-built `toolbox` binary into platform-specific archives (`.tar.gz` or `.zip`).
+There is no build step. The repository holds every file a harness needs: the
+manifests, `MCP-TOOLBOX.md`, and `skills/`. The MCP server is not bundled. Each
+manifest runs it with `npx -y @toolbox-sdk/server@<version> --stdio`.
 
-This process is handled automatically by the
-[`package-and-upload-assets.yml`](.github/workflows/package-and-upload-assets.yml)
-GitHub Actions workflow when a new release is created. Manual building is not
-required.
+Harnesses install this plugin straight from the repository. Claude Code and
+Codex clone it, and Antigravity copies a local directory, so a binary shipped
+only inside a release archive would never reach three of the four harnesses.
+That is why the server runs from npm rather than from a packaged binary.
 
 ## Maintainer Information
 
@@ -135,7 +128,5 @@ The process is handled by the [`mirror-changelog.yml`](.github/workflows/mirror-
 2.  **Merge Release PR:** A maintainer approves and merges the Release PR. This
     action triggers `release-please` to create a new GitHub tag and a
     corresponding GitHub Release.
-3.  **Package and Upload:** The new release triggers the
-    `package-and-upload-assets.yml` workflow. This workflow builds the
-    platform-specific extension archives and uploads them as assets to the
-    GitHub Release.
+3.  **No asset step.** The release carries no attached archives. Every harness
+    installs from the repository at the tag.

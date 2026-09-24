@@ -21,18 +21,27 @@
       pinDigests: true,
     },
     {
-      matchPackageNames: ['googleapis/mcp-toolbox'],
-      'semanticCommitType': 'feat'
+      matchPackageNames: ['@toolbox-sdk/server'],
+      // Group the toolbox update under a stable branch name (renovate/toolbox).
+      groupName: 'toolbox',
+      semanticCommitType: 'feat',
     }
   ],
   customManagers: [
     {
+      // Track the npm toolbox server pinned in the MCP command. The version is
+      // repeated in every manifest that declares the server, so all of them are
+      // bumped in one PR.
       customType: "regex",
-      managerFilePatterns: ["/toolbox_version\\.txt$/"],
-      matchStrings: ["(?<currentValue>[\\d\\.]+)"],
-      datasourceTemplate: "github-releases",
-      packageNameTemplate: "googleapis/mcp-toolbox",
-      extractVersionTemplate: "^v(?<version>.*)$",
+      managerFilePatterns: [
+        "/mcp\\.json$/",
+        "/gemini-extension\\.json$/",
+        "/\\.claude-plugin/plugin\\.json$/",
+        "/\\.codex-plugin/\\.mcp\\.json$/",
+      ],
+      matchStrings: ["@toolbox-sdk/server@(?<currentValue>[\\d\\.]+)"],
+      datasourceTemplate: "npm",
+      depNameTemplate: "@toolbox-sdk/server",
     }
   ]
 }
