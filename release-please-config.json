@@ -36,6 +36,10 @@
         {
           "type": "generic",
           "path": "skills/getting-started/SKILL.md"
+        },
+        {
+          "type": "generic",
+          "path": "skills/answer-questions/SKILL.md"
         }
       ]
     }
