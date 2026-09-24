@@ -32,6 +32,10 @@
           "type": "json",
           "path": "gemini-extension.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "generic",
+          "path": "skills/getting-started/SKILL.md"
         }
       ]
     }
