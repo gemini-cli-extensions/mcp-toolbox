@@ -35,9 +35,9 @@
       customType: "regex",
       managerFilePatterns: [
         "/mcp\\.json$/",
+        "/mcp_config\\.json$/",
         "/gemini-extension\\.json$/",
         "/\\.claude-plugin/plugin\\.json$/",
-        "/\\.codex-plugin/\\.mcp\\.json$/",
       ],
       matchStrings: ["@toolbox-sdk/server@(?<currentValue>[\\d\\.]+)"],
       datasourceTemplate: "npm",
