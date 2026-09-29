@@ -14,7 +14,10 @@ If no tools are available or there is an error message `ERROR "unable to read to
 
 # Configuring Custom Tools
 
-Please refer to the following resources:
+The `getting-started` skill covers this end to end. Use it to author
+`tools.yaml`.
+
+For documentation beyond what the skills carry:
 * [llms.txt](https://mcp-toolbox.dev/llms.txt): For concise,
   high-level information.
 * [llms-full.txt](https://mcp-toolbox.dev/llms-full.txt): For
