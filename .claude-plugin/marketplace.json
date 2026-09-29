@@ -1,0 +1,17 @@
+{
+  "name": "mcp-toolbox-devkit-marketplace",
+  "owner": {
+    "name": "Google LLC",
+    "email": "senseai-eco@google.com"
+  },
+  "metadata": {
+    "description": "MCP Toolbox for Databases: an MCP server and agent skills for building applications on your data."
+  },
+  "plugins": [
+    {
+      "name": "mcp-toolbox-devkit",
+      "source": "./",
+      "description": "Build applications with MCP Toolbox for Databases."
+    }
+  ]
+}

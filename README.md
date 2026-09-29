@@ -27,22 +27,50 @@ Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini
 
 Before you begin, ensure you have the following:
 
-* [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed with version **+v0.6.0**.
-* Setup Gemini CLI [Authentication](https://github.com/google-gemini/gemini-cli/tree/main?tab=readme-ov-file#-authentication-options).
+* One of the supported agent harnesses, installed and authenticated:
+  * [Gemini CLI](https://github.com/google-gemini/gemini-cli) (v0.6.0+). See [Authentication](https://github.com/google-gemini/gemini-cli/tree/main?tab=readme-ov-file#-authentication-options).
+  * [Claude Code](https://code.claude.com)
+  * [Codex](https://developers.openai.com/codex) (v0.150.0+)
+  * [Antigravity CLI](https://antigravity.google)
+* [Node.js](https://nodejs.org/) (the MCP server runs via `npx`).
 * Any required APIs and permissions for connecting to your database.
 
 ## Getting Started
 
 ### Installation
 
+All harnesses use the same plugin; the MCP server runs via `npx` (no binary to download). Install with your harness of choice:
+
+**Gemini CLI**
+
 ```bash
 gemini extensions install https://github.com/gemini-cli-extensions/mcp-toolbox
+```
+
+**Claude Code**
+
+```bash
+claude plugin marketplace add gemini-cli-extensions/mcp-toolbox
+claude plugin install mcp-toolbox-devkit@mcp-toolbox-devkit-marketplace
+```
+
+**Codex**
+
+```bash
+codex plugin marketplace add gemini-cli-extensions/mcp-toolbox
+codex plugin add mcp-toolbox-devkit@mcp-toolbox-devkit-marketplace
+```
+
+**Antigravity**
+
+```bash
+agy plugin install https://github.com/gemini-cli-extensions/mcp-toolbox
 ```
 
 ### Configuration
 
 * Add your [`tools.yaml` configuration file](https://mcp-toolbox.dev/documentation/configuration/) to the directory you
-are running Gemini CLI.
+run your harness from.
 
 Ensure [Application Default Credentials](https://cloud.google.com/docs/authentication/gcloud) are available in your environment if connecting to Google Cloud services.
 
@@ -70,5 +98,5 @@ Common issues:
 
 * "failed to find default credentials: google: could not find default credentials.": Ensure [Application Default Credentials](https://cloud.google.com/docs/authentication/gcloud) are available in your environment. See [Set up Application Default Credentials](https://cloud.google.com/docs/authentication/external/set-up-adc) for more information.
 * "✖ Error during discovery for server: MCP error -32000: Connection closed": The database connection has not been established. Ensure your configuration is set via environment variables.
-* "✖ MCP ERROR: Error: spawn /Users/USER/.gemini/extensions/mcp-toolbox/toolbox ENOENT": The Toolbox binary did not download correctly. Ensure you are using Gemini CLI v0.6.0+.
-* "cannot execute binary file": The Toolbox binary did not download correctly. Ensure the correct binary for your OS/Architecture has been downloaded. See [Installing the server](https://mcp-toolbox.dev/documentation/introduction/#install-toolbox) for more information.
+* "✖ MCP ERROR: Error: spawn npx ENOENT": Node.js is not on your path. The server runs with `npx`, so install Node.js and restart the harness.
+* "✖ MCP ERROR: npm error 404 @toolbox-sdk/server@&lt;version&gt;": The pinned version does not exist on npm. See [Installing the server](https://mcp-toolbox.dev/documentation/introduction/#install-toolbox) and file an issue against this repository.

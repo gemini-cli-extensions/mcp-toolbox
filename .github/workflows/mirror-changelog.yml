@@ -20,7 +20,9 @@ on: # zizmor: ignore[dangerous-triggers]
     types: [opened, edited]
 jobs:
   add-release-notes:
-    if: github.actor == 'renovate-bot' && startsWith(github.head_ref, 'renovate/googleapis-mcp-toolbox')
+    # Renovate groups toolbox updates (groupName 'toolbox' in renovate.json5), so
+    # they land on renovate/toolbox, or renovate/major-toolbox for major bumps.
+    if: github.actor == 'renovate-bot' && startsWith(github.head_ref, 'renovate/') && endsWith(github.head_ref, 'toolbox')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
