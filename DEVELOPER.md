@@ -134,26 +134,6 @@ Currently, there are no automated unit or integration test suites
 within this repository. All functional testing must be performed manually. All tools
 are currently tested in the [MCP Toolbox GitHub](https://github.com/googleapis/mcp-toolbox).
 
-### Validating the Manifests
-
-Presubmit validates only `gemini-extension.json`. Nothing in CI checks the other
-manifests yet, so run these checks before you send a pull request that changes
-them:
-
-```bash
-# Gemini CLI
-gemini extensions validate .
-
-# Claude Code: checks marketplace.json and the plugin.json it points to
-claude plugin validate --strict .
-
-# Agent Plugins schemas: plugin.json and mcp.json
-curl -sLo /tmp/plugin.schema.json https://agent-plugins.org/schemas/1.0.0/plugin.schema.json
-curl -sLo /tmp/mcp.schema.json https://agent-plugins.org/schemas/1.0.0/mcp.schema.json
-npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s /tmp/plugin.schema.json -d plugin.json
-npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s /tmp/mcp.schema.json -d mcp.json
-```
-
 ### Other GitHub Checks
 
 *   **License Header Check:** A workflow ensures all necessary files contain the
