@@ -31,6 +31,7 @@ Each harness reads its own manifest, so this repository ships several:
 | `plugin.json` | Codex, other Agent Plugins hosts | Portable [Agent Plugins](https://agent-plugins.org) manifest: name, version, and metadata |
 | `mcp.json` | Codex, other Agent Plugins hosts | Portable MCP server configuration |
 | `.codex-plugin/plugin.json` | Codex | Install-surface metadata (`interface`): display name, category, and default prompt |
+| `mcp_config.json` | Antigravity | MCP server configuration |
 
 Keep these rules in mind when you edit them:
 
@@ -41,11 +42,11 @@ Keep these rules in mind when you edit them:
     `extensions["com.google.cloud.data.agent-plugins"]` in `plugin.json`, so
     keep the two in sync. See
     [Build plugins](https://developers.openai.com/codex/plugins/build#manifest-fields).
-*   **The MCP server is declared in three files.** `gemini-extension.json`,
-    `.claude-plugin/plugin.json`, and `mcp.json` each declare `mcp_toolbox`
-    because each harness reads a different file. Keep the three identical.
-    Renovate bumps the pinned `@toolbox-sdk/server` version in all of them; add
-    any new file that declares the server to `.github/renovate.json5`.
+*   **The MCP server is declared in four files.** `gemini-extension.json`,
+    `.claude-plugin/plugin.json`, `mcp.json`, and `mcp_config.json` each declare
+    `mcp_toolbox` because each harness reads a different file. Keep the four
+    identical. Renovate bumps the pinned `@toolbox-sdk/server` version in all of
+    them; add any new file that declares the server to `.github/renovate.json5`.
 *   **The plugin version is in four files.** `gemini-extension.json`,
     `plugin.json`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json`
     each carry `version`, and Release Please bumps all four. Claude Code only
