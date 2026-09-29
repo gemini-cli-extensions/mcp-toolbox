@@ -37,7 +37,6 @@
         "/mcp\\.json$/",
         "/gemini-extension\\.json$/",
         "/\\.claude-plugin/plugin\\.json$/",
-        "/\\.codex-plugin/\\.mcp\\.json$/",
       ],
       matchStrings: ["@toolbox-sdk/server@(?<currentValue>[\\d\\.]+)"],
       datasourceTemplate: "npm",

@@ -29,6 +29,5 @@
     "defaultPrompt": [
       "You are a highly skilled database engineer. Your purpose is to help the developer author a tools.yaml configuration for MCP Toolbox for Databases, connect it to their data sources, and use the resulting tools throughout the software delivery cycle."
     ]
-  },
-  "mcpServers": "./.codex-plugin/.mcp.json"
+  }
 }
