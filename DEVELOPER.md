@@ -11,12 +11,55 @@ Before you begin, ensure you have the following:
     instructions can be found on the official Gemini CLI documentation. You can
     verify your version by running `gemini --version`.
 2.  **MCP Toolbox tools.yaml:** For testing, you will need a custom tools.yaml.
+    The server reads it from its working directory and exits if it is missing.
+3.  **Node.js:** Every manifest starts the server with `npx`, so Node.js must be
+    on your path.
+4.  **Claude Code and Codex (optional):** Needed only to test those harnesses.
+    See [Testing in Other Harnesses](#testing-in-other-harnesses).
 
 ## Developing the Extension
 
+### Plugin Manifests
+
+Each harness reads its own manifest, so this repository ships several:
+
+| File | Read by | Purpose |
+| --- | --- | --- |
+| `gemini-extension.json` | Gemini CLI | Extension manifest: version, MCP server, and `MCP-TOOLBOX.md` as the context file |
+| `.claude-plugin/plugin.json` | Claude Code | Plugin manifest: version and MCP server |
+| `.claude-plugin/marketplace.json` | Claude Code, Codex | Marketplace that lists this repository (`"source": "./"`), so users can install straight from it |
+| `plugin.json` | Codex, other Agent Plugins hosts | Portable [Agent Plugins](https://agent-plugins.org) manifest: name, version, and metadata |
+| `mcp.json` | Codex, other Agent Plugins hosts | Portable MCP server configuration |
+| `.codex-plugin/plugin.json` | Codex | Install-surface metadata (`interface`): display name, category, and default prompt |
+
+Keep these rules in mind when you edit them:
+
+*   **Codex loads the MCP server only from `mcp.json`.** The root `plugin.json`
+    makes this a portable package, so Codex ignores any `mcpServers` in
+    `.codex-plugin/plugin.json`. Codex reads `interface` from
+    `.codex-plugin/plugin.json`, not from the `codex` block under
+    `extensions["com.google.cloud.data.agent-plugins"]` in `plugin.json`, so
+    keep the two in sync. See
+    [Build plugins](https://developers.openai.com/codex/plugins/build#manifest-fields).
+*   **The MCP server is declared in three files.** `gemini-extension.json`,
+    `.claude-plugin/plugin.json`, and `mcp.json` each declare `mcp_toolbox`
+    because each harness reads a different file. Keep the three identical.
+    Renovate bumps the pinned `@toolbox-sdk/server` version in all of them; add
+    any new file that declares the server to `.github/renovate.json5`.
+*   **The plugin version is in four files.** `gemini-extension.json`,
+    `plugin.json`, `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json`
+    each carry `version`, and Release Please bumps all four. Claude Code only
+    updates an installed plugin when this string changes, so add any new
+    manifest with a `version` to `extra-files` in `release-please-config.json`.
+    See [Plugin loading](https://code.claude.com/docs/en/plugins/loading).
+
 ### Running from Local Source
 
-The core logic for this extension is handled by a pre-built `toolbox` binary. The development process involves installing the extension locally into the Gemini CLI to test changes.
+The core logic for this extension is handled by the `@toolbox-sdk/server` npm
+package, which each manifest runs with `npx`. The development process involves
+installing the extension locally into the Gemini CLI to test changes. To test in
+Claude Code or Codex, see
+[Testing in Other Harnesses](#testing-in-other-harnesses).
 
 1.  **Clone the Repository:**
 
@@ -43,6 +86,42 @@ The core logic for this extension is handled by a pre-built `toolbox` binary. Th
     You can now interact with the `mcp-toolbox` tools to manually test your changes
     against your connected database.
 
+### Testing in Other Harnesses
+
+The steps above use the Gemini CLI. To test the same working tree in Claude
+Code or Codex:
+
+*   **Claude Code:** Load the plugin for a single session:
+
+    ```bash
+    claude --plugin-dir .
+    ```
+
+    Or install it through the repository's own marketplace, the same way users
+    do:
+
+    ```bash
+    claude plugin marketplace add ./
+    claude plugin install mcp-toolbox-devkit@mcp-toolbox-devkit-marketplace
+    ```
+
+    A marketplace added from a local directory loads the plugin in place, so
+    your edits apply at the next session or after `/reload-plugins`. See
+    [Plugin loading](https://code.claude.com/docs/en/plugins/loading). Run
+    `/mcp` to check that `mcp_toolbox` is connected.
+
+*   **Codex:** Codex also reads `.claude-plugin/marketplace.json`. Add the
+    repository as a local marketplace and confirm that Codex resolves it:
+
+    ```bash
+    codex plugin marketplace add ./
+    codex plugin marketplace list
+    ```
+
+    Then install `mcp-toolbox-devkit` from the Plugins Directory. The Codex
+    docs route local installs through the ChatGPT desktop app. See
+    [Build plugins](https://developers.openai.com/codex/plugins/build#add-a-marketplace-from-the-cli).
+
 ## Testing
 
 ### Automated Presubmit Checks
@@ -54,6 +133,26 @@ be successfully installed by the Gemini CLI.
 Currently, there are no automated unit or integration test suites
 within this repository. All functional testing must be performed manually. All tools
 are currently tested in the [MCP Toolbox GitHub](https://github.com/googleapis/mcp-toolbox).
+
+### Validating the Manifests
+
+Presubmit validates only `gemini-extension.json`. Nothing in CI checks the other
+manifests yet, so run these checks before you send a pull request that changes
+them:
+
+```bash
+# Gemini CLI
+gemini extensions validate .
+
+# Claude Code: checks marketplace.json and the plugin.json it points to
+claude plugin validate --strict .
+
+# Agent Plugins schemas: plugin.json and mcp.json
+curl -sLo /tmp/plugin.schema.json https://agent-plugins.org/schemas/1.0.0/plugin.schema.json
+curl -sLo /tmp/mcp.schema.json https://agent-plugins.org/schemas/1.0.0/mcp.schema.json
+npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s /tmp/plugin.schema.json -d plugin.json
+npx -y ajv-cli@5 validate --spec=draft2020 --strict=false -s /tmp/mcp.schema.json -d mcp.json
+```
 
 ### Other GitHub Checks
 
