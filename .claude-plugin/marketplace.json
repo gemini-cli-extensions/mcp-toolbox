@@ -5,7 +5,7 @@
     "email": "senseai-eco@google.com"
   },
   "metadata": {
-    "description": "MCP Toolbox for Databases: an MCP server and agent skills for building applications on your data."
+    "description": "Connect, configure, and manage enterprise databases with MCP Toolbox prebuilt and custom tools."
   },
   "plugins": [
     {
