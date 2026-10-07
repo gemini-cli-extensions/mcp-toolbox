@@ -31,12 +31,6 @@ jobs:
       - name: Install Gemini CLI
         run: npm install @google/gemini-cli
 
-      - name: Install toolbox binary
-        run: |
-          VERSION=$(cat toolbox_version.txt)
-          curl -L -o toolbox "https://storage.googleapis.com/mcp-toolbox-for-databases/v${VERSION}/linux/amd64/toolbox"
-          chmod +x toolbox
-
       - name: Install Extension
         run: npx gemini extensions validate .
         env:

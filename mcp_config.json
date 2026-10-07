@@ -1,7 +1,4 @@
 {
-  "name": "mcp-toolbox-devkit",
-  "version": "0.7.1",
-  "description": "Build applications with MCP Toolbox for Databases.",
   "mcpServers": {
     "mcp_toolbox": {
       "command": "npx",
@@ -10,9 +7,8 @@
         "@toolbox-sdk/server@1.13.1",
         "--stdio",
         "--user-agent-metadata",
-        "plugin-geminicli"
+        "plugin-antigravity"
       ]
     }
-  },
-  "contextFileName": "MCP-TOOLBOX.md"
+  }
 }

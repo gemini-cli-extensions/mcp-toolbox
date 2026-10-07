@@ -1,0 +1,17 @@
+{
+  "name": "mcp-toolbox-marketplace",
+  "owner": {
+    "name": "Google LLC",
+    "email": "senseai-eco@google.com"
+  },
+  "metadata": {
+    "description": "Connect, configure, and manage enterprise databases with MCP Toolbox prebuilt and custom tools."
+  },
+  "plugins": [
+    {
+      "name": "mcp-toolbox-devkit",
+      "source": "./",
+      "description": "Build applications with MCP Toolbox for Databases."
+    }
+  ]
+}
