@@ -51,14 +51,14 @@ gemini extensions install https://github.com/gemini-cli-extensions/mcp-toolbox
 
 ```bash
 claude plugin marketplace add gemini-cli-extensions/mcp-toolbox
-claude plugin install mcp-toolbox-devkit@mcp-toolbox-devkit-marketplace
+claude plugin install mcp-toolbox-devkit@mcp-toolbox-marketplace
 ```
 
 **Codex**
 
 ```bash
 codex plugin marketplace add gemini-cli-extensions/mcp-toolbox
-codex plugin add mcp-toolbox-devkit@mcp-toolbox-devkit-marketplace
+codex plugin add mcp-toolbox-devkit@mcp-toolbox-marketplace
 ```
 
 **Antigravity**

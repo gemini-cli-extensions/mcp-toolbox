@@ -103,7 +103,7 @@ Code or Codex:
 
     ```bash
     claude plugin marketplace add ./
-    claude plugin install mcp-toolbox-devkit@mcp-toolbox-devkit-marketplace
+    claude plugin install mcp-toolbox-devkit@mcp-toolbox-marketplace
     ```
 
     A marketplace added from a local directory loads the plugin in place, so
