@@ -47,6 +47,10 @@
           "type": "json",
           "path": ".codex-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "generic",
+          "path": "skills/getting-started/SKILL.md"
         }
       ]
     }
